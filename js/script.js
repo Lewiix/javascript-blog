@@ -30,10 +30,6 @@ function titleClickHandler(event) {
   /* [DONE] add class 'active' to the correct article */
     valueSelector.classList.add('active');
 }
-const links = document.querySelectorAll('.titles a')
-for (let link of links) {
-    link.addEventListener('click', titleClickHandler);
-}
 
     const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
@@ -70,5 +66,8 @@ function generateTitleLinks() {
     titleList.insertAdjacentHTML("afterbegin", html);
 }
 generateTitleLinks();
-
-
+const links = document.querySelectorAll('.titles a')
+for (let link of links) {
+    console.log(links);
+    link.addEventListener('click', titleClickHandler);
+}
