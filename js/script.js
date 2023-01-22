@@ -67,7 +67,7 @@ function generateTitleLinks() {
       html = html + linkHTML;
 
     }
-    titleList.innerHTML = html;
+    titleList.insertAdjacentHTML("afterbegin", html);
 }
 generateTitleLinks();
 
