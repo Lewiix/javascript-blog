@@ -12,6 +12,7 @@
     "build:autoprefixer": "postcss css/*.css --use autoprefixer -d css",
     "test": "npm-run-all test:*",
     "test:html": "html-validate *.html",
+    "test:scss": "stylelint sass/",
     "test:js": "eslint js/",
     "build-dev": "npm-run-all build-dev:sass build:autoprefixer",
     "build-dev:sass": "sass --style=expanded --source-map sass:css",
@@ -33,7 +34,10 @@
     "onchange": "^7.1.0",
     "postcss": "^8.2.6",
     "postcss-cli": "^8.3.1",
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "stylelint-scss": "^4.3.0"
   },
   "repository": {
     "type": "git",
@@ -43,8 +47,8 @@
     "url": "https://github.com/Lewiix/Project-Golden/issues"
   },
   "homepage": "https://github.com/Lewiix/Project-Golden#readme",
-  "description": "",
   "dependencies": {
     "eslint-watch": "^8.0.0"
-  }
+  },
+  "description": ""
 }
