@@ -42,5 +42,13 @@
   "dependencies": {
     "eslint-watch": "^8.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lewiix/javascript-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lewiix/javascript-blog.git/issues"
+  },
+  "homepage": "https://github.com/Lewiix/javascript-blog.git#readme",
   "description": ""
 }
