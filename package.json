@@ -39,14 +39,6 @@
     "stylelint-config-standard-scss": "^6.1.0",
     "stylelint-scss": "^4.3.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lewiix/Project-Golden.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Lewiix/Project-Golden/issues"
-  },
-  "homepage": "https://github.com/Lewiix/Project-Golden#readme",
   "dependencies": {
     "eslint-watch": "^8.0.0"
   },
