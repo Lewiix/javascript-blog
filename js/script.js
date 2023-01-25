@@ -67,7 +67,7 @@ for (let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
 function generateTags() {
-/* find all articles */
+  /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   //console.log('articles', articles);
   /* START LOOP: for every article: */
@@ -84,15 +84,17 @@ function generateTags() {
     const articleTagsArray = articleTags.split(' ');
     console.log(articleTagsArray);
     /* START LOOP: for each tag */
-
-    /* generate HTML of the link */
-
-    /* add generated code to html variable */
-
+    for (let tag of articleTagsArray) {
+      console.log(tag);
+      /* generate HTML of the link */
+      const linkHTML ='<li><a href="#tag-' + tag +'">' + tag + '&nbsp' + '</a></li>';
+      /* add generated code to html variable */
+      html = html + linkHTML;
+      console.log(html);
     /* END LOOP: for each tag */
-
+    }
     /* insert HTML of all the links into the tags wrapper */
-
+    tagsWrapper.insertAdjacentHTML('afterbegin', html);
   /* END LOOP: for every article: */
   }
 }
