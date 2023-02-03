@@ -34,7 +34,8 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
-  optAuthorSelector = '.post-author';
+  optAuthorSelector = '.post-author',
+  optTagsListSelector = '.tags.list';
 
 function generateTitleLinks(customSelector = '') {
 
@@ -70,7 +71,12 @@ for (let link of links) {
   console.log(links);
   link.addEventListener('click', titleClickHandler);
 }
+function calculateTagsParams (tags) {
+  
+}
 function generateTags() {
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
   /* find all articles */
   const articles = document.querySelectorAll(optArticleSelector);
   //console.log('articles', articles);
@@ -95,12 +101,38 @@ function generateTags() {
       /* add generated code to html variable */
       html = html + linkHTML;
       console.log(html);
+      /* [NEW] check if this link is NOT already in allTags */
+      if(!allTags.hasOwnProperty(tag)) {
+      /* [NEW] add generated code to allTags object */
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
+      }
     /* END LOOP: for each tag */
     }
     /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.insertAdjacentHTML('afterbegin', html);
   /* END LOOP: for every article: */
   }
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector(optTagsListSelector);
+  console.log(tagList);
+  /* [NEW] add html from allTags to tagList */
+  //tagList.innerHTML = allTags.join('');
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams', tagsParams);
+  /* [MEW] create variable for all links HTML code */
+  let allTagsHTML ='';
+  /*[NEW] START LOOP: for each tag in allTags */
+  for (let tag in allTags) {
+    /*[NEW] generate code of a linnk and add it to allTagsHTML*/
+    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    
+  }
+  console.log(allTagsHTML);
+  console.log(allTags);
+  tagList.innerHTML = allTagsHTML;
+  
 }
 generateTags();
 function tagClickHandler(event) {
