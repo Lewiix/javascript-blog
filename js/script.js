@@ -35,7 +35,9 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list';
+  optTagsListSelector = '.tags.list',
+  optCloudClassCount = 5,
+  optCloudClassPrefix = 'tag-size-';
 
 function generateTitleLinks(customSelector = '') {
 
@@ -72,7 +74,7 @@ for (let link of links) {
   link.addEventListener('click', titleClickHandler);
 }
 function calculateTagsParams (tags) {
-  const params = {max: 0, min: 99999}
+  const params = {max: 0, min: 99999};
   console.log(params);
   for (let tag in tags) {
     console.log(tag + ' is used ' + tags[tag] + ' times');
@@ -85,6 +87,14 @@ function calculateTagsParams (tags) {
     }
   }
   return params;
+}
+function calculateTagClass (count, params) {
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1);
+  console.log ( classNumber);
+  return optCloudClassPrefix + classNumber;
 }
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -119,6 +129,7 @@ function generateTags() {
         allTags[tag] = 1;
       } else {
         allTags[tag]++;
+        console.log(allTags);
       }
     /* END LOOP: for each tag */
     }
@@ -135,11 +146,15 @@ function generateTags() {
   console.log('tagsParams', tagsParams);
   /* [MEW] create variable for all links HTML code */
   let allTagsHTML ='';
+  
   /*[NEW] START LOOP: for each tag in allTags */
   for (let tag in allTags) {
     /*[NEW] generate code of a linnk and add it to allTagsHTML*/
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
-    
+    const tagLinkHTML = '<li><a class="' + calculateTagClass(allTags[tag], tagsParams) + '" href="#' + tag + '">' + tag + '</a></li>';
+    console.log('taglinkHTML', tagLinkHTML);
+    allTagsHTML += tagLinkHTML;
+    /*tag + ' (' + allTags[tag] + ') ';*/
+    console.log(allTagsHTML);
   }
   console.log(allTagsHTML);
   console.log(allTags);
